@@ -4,16 +4,20 @@
 #include <vector>
 #include <cmath>
 #include <functional>
-
+#include <numeric>
 unsigned int convert_2_decimal(const std::string& bits) {
     unsigned int position = 0;
     unsigned int sum = 0;
-    for(auto it = bits.rbegin(); it != bits.rend(); it++) {
-        if (*it == '1') {
-            sum += static_cast<unsigned int>(std::pow(2, position));
+
+    sum = std::accumulate(bits.rbegin(), bits.rend(), sum, [&position](unsigned sum, char bit){
+        unsigned int result = 0;
+        if(bit == '1'){
+            result = static_cast<unsigned int>(std::pow(2, position));
         }
         position++;
-    }
+        return sum + result;
+    } );
+
     return sum;
 }
 
@@ -57,7 +61,6 @@ int main() {
     }
     std::string line;
     std::vector<std::string> binaries;
-    std::vector<std::string> binaries2;
     while (std::getline(input_data, line)) {
         binaries.push_back(line);
     }
