@@ -63,14 +63,11 @@ int main() {
     }
     input_data.close();
 
-    const auto count_bits = (*binaries.begin()).size();
     std::function<char(unsigned int, unsigned int)> greater_then = [](unsigned int a, unsigned int b){return a >= b;};
     std::function<char(unsigned int, unsigned int)> lesser_then = [](unsigned int a, unsigned int b){return a < b;};
 
     auto oxygen = calc(binaries, greater_then);
     auto co2 = calc(binaries, lesser_then);
-
-    //
 
     std::cout << "The solution is: " << oxygen * co2 << std::endl;
     return 0;
