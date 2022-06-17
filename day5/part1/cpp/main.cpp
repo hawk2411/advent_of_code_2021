@@ -49,8 +49,6 @@ void calc_points(const std::pair<int, int> &p1, const std::pair<int, int> &p2,
             else {
                 it->second++;
             }
-
-
         }
     }
 }
