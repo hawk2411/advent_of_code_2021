@@ -19,10 +19,7 @@ std::optional<std::pair<point, point>> input_parser::get_vector_from_string(cons
     unsigned int x2 = std::atoi(matches.str(3).c_str());
     unsigned int y2 = std::atoi(matches.str(4).c_str());
 
-    if(x1 == x2 || y1 == y2)
-        return std::make_pair(point(x1,y1), point(x2,y2));
-    else
-        return std::nullopt;
+    return std::make_pair(point(x1,y1), point(x2,y2));
 }
 
 std::vector<point> input_parser::get_points_from_vector(const std::pair<point, point>& vector_2d) {
