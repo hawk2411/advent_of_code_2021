@@ -21,18 +21,17 @@ int main() {
 
     std::string text_line;
 
-    unsigned int sum = 0;
 
+    std::vector<unsigned int> fish_states;
     while(std::getline(input_data, text_line)) {
-        auto fish_timers = input_parser::parse_line(text_line);
-        fish_simulator simulator(fish_timers);
-        sum = simulator.simulate(80);
-
+        fish_states = input_parser::parse_line(text_line);
+        break;
     }
-
     input_data.close();
 
-
+    std::size_t sum = 0;
+    fish_simulator simulator(fish_states);
+    sum += simulator.simulate(256);
     std::cout << "Solution: " << sum << std::endl;
     return 1;
 }
