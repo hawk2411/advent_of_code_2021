@@ -80,6 +80,7 @@ public:
                 //result += created;
             }
         }
+
         for(auto& item : thread_pool ) {
             item.worker_thread.join();
         }
